@@ -1,0 +1,27 @@
+---
+title: "M5_W1_L1_What_is_Reproducible_Research_About"
+author: "Alexander Cormack"
+date: "21 February 2023"
+output: html_notebook
+---
+
+
+# What is Reproducible Research About
+
+Not much to say here ... David makes the analogy with music and presents two pieces of music: a relatively simple 'pop' song and a quite complex piece of classical music.
+
+The 'score' allows the conductor to reproduce the intention of the composer.
+
+So for data analysis ... how do you develop the score for data analysis?
+
+There is no real agreed upon 'score' for reproducing work ...
+
+Some people will just describe in words what was done, and in some cases, this is sufficient, but in many cases, it's not.
+Some people will provide the computer code and the data and everything that you need, and sometimes that's good.
+But sometimes it's enormously complex and it's difficult to sort through.
+
+And so there are a variety of ways that you can communicate data analysis, but we just haven't agreed upon what is a way that is more or less sufficient for everybody.
+
+So, what we're gonna focus on in this course is how to communicate data analysis, using code by writing documents that are very dynamic,
+and by sharing data so that other people can reproduce the work that you're doing. 
+
