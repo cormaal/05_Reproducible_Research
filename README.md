@@ -1,2 +1,2 @@
 # 05_Reproducible_Research
-Module % in the Johns Hopkins Data Science Specialisation
+Module 5 in the Johns Hopkins Data Science Specialisation
