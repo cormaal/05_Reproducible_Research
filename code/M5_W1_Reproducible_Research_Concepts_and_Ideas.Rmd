@@ -1,0 +1,83 @@
+---
+title: "M5_W1_Reproducible_Research:_Concepts_and_Ideas"
+author: "Alexander Cormack"
+date: "2023-02-21"
+output: html_document
+---
+
+
+# Reproducible Research: Concepts and Ideas
+
+
+## What is Reproducible Research About
+
+Not much to say here ... David makes the analogy with music and presents two pieces of music: a relatively simple 'pop' song and a quite complex piece of classical music.
+
+The 'score' allows the conductor to reproduce the intention of the composer.
+
+So for data analysis ... how do you develop the score for data analysis?
+
+There is no real agreed upon 'score' for reproducing work ...
+
+Some people will just describe in words what was done, and in some cases, this is sufficient, but in many cases, it's not.
+Some people will provide the computer code and the data and everything that you need, and sometimes that's good.
+But sometimes it's enormously complex and it's difficult to sort through.
+
+And so there are a variety of ways that you can communicate data analysis, but we just haven't agreed upon what is a way that is more or less sufficient for everybody.
+
+So, what we're gonna focus on in this course is how to communicate data analysis, using code by writing documents that are very dynamic,
+and by sharing data so that other people can reproduce the work that you're doing. 
+
+
+## Concepts and Ideas (Part 1)
+
+### Replication
+
+The ultimate standard for strengthening scientific evidence is replication of findings and conducting studies with independent:
+
+- investigators
+- data
+- analytical methods
+- laboratories
+- instruments
+
+Replication is particularly important in studies that can impact broad policy or regulatory decisions
+
+### What's Wrong with Replication?
+
+Some studies cannot be replicated
+
+- no time, opportunistic
+- no money
+- unique
+
+Reproducible research: make analytical data and code available so that others may reproduce findings
+
+How can we bridge the gap between replication and doing nothing? Reproducibility is the answer.
+
+### Why do we need reproducible research?
+
+- New technologies increasing data collection throughput; data are more complex and extremely high dimensional
+
+- Existing databases can be merged into new 'megadatabases'
+
+- Computing power is greatly increased, allowing more sophisticated analyses
+
+- For every field 'X' there is a field 'Computational X'
+
+### Example - Reproducible Air Pollution and Health Research
+
+- Estimating small (but important) health effects in the presence of much stronger signals
+
+- Results inform substantial policy decisions, affect many stakeholders
+    - EPA regulations can cost billions of dollars
+
+- Complex statistical methods are needed and subject to intense scrutiny
+
+Johns Hopkins have created the Internet-based Health and Air Pollution Surveillance System (iHAPSS) so their research can be reproduced by others
+
+
+
+
+
+
