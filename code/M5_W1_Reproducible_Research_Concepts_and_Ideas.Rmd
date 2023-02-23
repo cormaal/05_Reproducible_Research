@@ -68,13 +68,162 @@ How can we bridge the gap between replication and doing nothing? Reproducibility
 ### Example - Reproducible Air Pollution and Health Research
 
 - Estimating small (but important) health effects in the presence of much stronger signals
-
 - Results inform substantial policy decisions, affect many stakeholders
     - EPA regulations can cost billions of dollars
-
 - Complex statistical methods are needed and subject to intense scrutiny
 
 Johns Hopkins have created the Internet-based Health and Air Pollution Surveillance System (iHAPSS) so their research can be reproduced by others
+
+
+## Concepts and Ideas (Part 2)
+
+David mentions the research pipeline and how the researcher and the reader try to meet in the middle.
+
+Mentions that there has been a growing interest in reproducibility as evidenced by journal articles and such
+
+### The Institute of Medicine report
+
+In the discovery/test validation stage of omics-based tests:
+
+- data/metadata used to develop tests should be made publicly available
+- the computer code and fully specified computational procedures used for development of the candidate omics-based test should be made sustainably available
+- *Ideally, the computer code that is released will* ***encompass all of the steps of computational analysis,*** *including all data preprocessing steps, that have been described in this chapter. All aspects of the analysis need to be transparently reported.*
+
+### What do we need for reproducible research?
+
+- Analytic data are available
+- Analytic code are available
+- Documentation of code and data
+- Standard means of distribution
+
+### Who are the players?
+
+- Authors
+    - want to make research reproducible
+    - want tools for reproducible research to make their lives easier (or at leas not much harder)
+
+- Readers
+    - want to reproduce (and perhaps expand upon) interesting findings
+    - want tools for reproducible research to make their lives easier
+
+### Challenges
+
+- Authors must undertake considerable effort to put data/results on the web (may not have resources like a web server)
+
+- Readers must download data/results individually and piece together which data go with which code sections, etc.
+
+- Readers may not have the same resources as authors
+
+- Few tools to help authors/readers (although the toolbox is growing)
+
+### In reality ...
+
+- Authors
+    - just put stuff on the web
+    - (infamous) journal supplementary materials
+    - there are some central databases for various fields (e.g. biology, ICPSR)
+
+- Readers
+  - just download the data and (try to) figure it out
+  - piece together the software to run it
+
+
+## Concepts and Ideas (Part 3)
+
+### Literate statistical programming
+
+- An article is a stream of text and code
+- Analysis code is divided into text and code "chunks"
+- Each code chunk loads data and computes results
+- Presentation code formats results (tables, figures, etc.)
+- Article text explains what is going on
+- Literate programs can be *weaved* to produce human-readable documents and *tangled* to produce machine-readable documents
+
+- Literate programming is a general concept that requires
+    1. A documentation language (human readable)
+    2. A programming language (machine readable)
+- Sweave uses Latex and R as the documentation and programming languages
+- Sweave was developed by Friedrich Leisch (member of the R Core) and is maintained by R core
+- Main website: http://www.statistik.lmu.de/
+
+- Sweave limitations
+    - Focused primarily on Latex, a difficult to learn markup language used only by weirdos
+    - Lacks features like caching, multiple plots per chunk, mixing programming languages and many other technical items
+    - Not frequently updated or actively developed
+
+- knitr is an alternative package
+- Brings together many features added on to Sweave to address limitations
+- knitr uses R as the programming language (although others are allowed) and a variety of documentation languages
+    - Latex, Markdown, HTML
+- knitr was developed by Yihui Xie (while a graduate student in statistics at Iowa State)
+- See: http://yihui.name/knitr/
+
+### Summary
+
+- Reproducible research is important as a *minimum standard*, particularly for studies that are difficult to replicate
+- Infrastructure is needed for *creating* and *distributing* reproducible documents, beyond what is currently available
+- There is a growing number of tools for creating reproducible documents
+
+
+## Scripting your analysis
+
+Not much to say here ... David makes the analogy (again) with music and describes how the score is the document that tells all of the players what they have to play and how and when.
+
+When doing data analysis you should write a script that describes all of the steps that were taken to reach the final outcome.
+
+
+## Structure of a data analysis (Part 1)
+
+### Steps in a data analysis
+
+- define the question
+- define the ideal data set
+- determine what data you can access
+- obtain the data
+- clean the data
+- exploratory data analysis
+- statistical prediction/modeling
+- interpret results
+- challenge results
+- synthesize/write up results
+- create reproducible code
+
+### The key challenge in data analysis
+
+This was well summed up by the mathematics educator, Dan Myer, in a Ted talk:
+
+*Ask yourselves, what problem have you solved, ever, that was worth solving, where you knew all of the given information in advance? Where you didn't have a surplus of information and had to filter it out, or you had insufficient information and had to go find some?*
+
+### Defining a question
+
+The more effort you put into defining a reasonable question, the less effort you will have to spend filtering stuff.
+
+An example
+
+***Start with a general question***
+
+Can I automatically detect emails that are SPAM or are not SPAM?
+
+***Make it concrete***
+
+Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?
+
+### Defiine the ideal data set
+
+5:24
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -426,19 +426,206 @@ analyses</p></li>
 <div id="example---reproducible-air-pollution-and-health-research" class="section level3">
 <h3>Example - Reproducible Air Pollution and Health Research</h3>
 <ul>
-<li><p>Estimating small (but important) health effects in the presence
-of much stronger signals</p></li>
-<li><p>Results inform substantial policy decisions, affect many
-stakeholders</p>
+<li>Estimating small (but important) health effects in the presence of
+much stronger signals</li>
+<li>Results inform substantial policy decisions, affect many
+stakeholders
 <ul>
 <li>EPA regulations can cost billions of dollars</li>
 </ul></li>
-<li><p>Complex statistical methods are needed and subject to intense
-scrutiny</p></li>
+<li>Complex statistical methods are needed and subject to intense
+scrutiny</li>
 </ul>
 <p>Johns Hopkins have created the Internet-based Health and Air
 Pollution Surveillance System (iHAPSS) so their research can be
 reproduced by others</p>
+</div>
+</div>
+<div id="concepts-and-ideas-part-2" class="section level2">
+<h2>Concepts and Ideas (Part 2)</h2>
+<p>David mentions the research pipeline and how the researcher and the
+reader try to meet in the middle.</p>
+<p>Mentions that there has been a growing interest in reproducibility as
+evidenced by journal articles and such</p>
+<div id="the-institute-of-medicine-report" class="section level3">
+<h3>The Institute of Medicine report</h3>
+<p>In the discovery/test validation stage of omics-based tests:</p>
+<ul>
+<li>data/metadata used to develop tests should be made publicly
+available</li>
+<li>the computer code and fully specified computational procedures used
+for development of the candidate omics-based test should be made
+sustainably available</li>
+<li><em>Ideally, the computer code that is released will</em>
+<strong><em>encompass all of the steps of computational
+analysis,</em></strong> <em>including all data preprocessing steps, that
+have been described in this chapter. All aspects of the analysis need to
+be transparently reported.</em></li>
+</ul>
+</div>
+<div id="what-do-we-need-for-reproducible-research" class="section level3">
+<h3>What do we need for reproducible research?</h3>
+<ul>
+<li>Analytic data are available</li>
+<li>Analytic code are available</li>
+<li>Documentation of code and data</li>
+<li>Standard means of distribution</li>
+</ul>
+</div>
+<div id="who-are-the-players" class="section level3">
+<h3>Who are the players?</h3>
+<ul>
+<li>Authors
+<ul>
+<li>want to make research reproducible</li>
+<li>want tools for reproducible research to make their lives easier (or
+at leas not much harder)</li>
+</ul></li>
+<li>Readers
+<ul>
+<li>want to reproduce (and perhaps expand upon) interesting
+findings</li>
+<li>want tools for reproducible research to make their lives easier</li>
+</ul></li>
+</ul>
+</div>
+<div id="challenges" class="section level3">
+<h3>Challenges</h3>
+<ul>
+<li><p>Authors must undertake considerable effort to put data/results on
+the web (may not have resources like a web server)</p></li>
+<li><p>Readers must download data/results individually and piece
+together which data go with which code sections, etc.</p></li>
+<li><p>Readers may not have the same resources as authors</p></li>
+<li><p>Few tools to help authors/readers (although the toolbox is
+growing)</p></li>
+</ul>
+</div>
+<div id="in-reality" class="section level3">
+<h3>In reality …</h3>
+<ul>
+<li>Authors
+<ul>
+<li>just put stuff on the web</li>
+<li>(infamous) journal supplementary materials</li>
+<li>there are some central databases for various fields (e.g. biology,
+ICPSR)</li>
+</ul></li>
+<li>Readers
+<ul>
+<li>just download the data and (try to) figure it out</li>
+<li>piece together the software to run it</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="concepts-and-ideas-part-3" class="section level2">
+<h2>Concepts and Ideas (Part 3)</h2>
+<div id="literate-statistical-programming" class="section level3">
+<h3>Literate statistical programming</h3>
+<ul>
+<li><p>An article is a stream of text and code</p></li>
+<li><p>Analysis code is divided into text and code “chunks”</p></li>
+<li><p>Each code chunk loads data and computes results</p></li>
+<li><p>Presentation code formats results (tables, figures,
+etc.)</p></li>
+<li><p>Article text explains what is going on</p></li>
+<li><p>Literate programs can be <em>weaved</em> to produce
+human-readable documents and <em>tangled</em> to produce
+machine-readable documents</p></li>
+<li><p>Literate programming is a general concept that requires</p>
+<ol style="list-style-type: decimal">
+<li>A documentation language (human readable)</li>
+<li>A programming language (machine readable)</li>
+</ol></li>
+<li><p>Sweave uses Latex and R as the documentation and programming
+languages</p></li>
+<li><p>Sweave was developed by Friedrich Leisch (member of the R Core)
+and is maintained by R core</p></li>
+<li><p>Main website: <a href="http://www.statistik.lmu.de/" class="uri">http://www.statistik.lmu.de/</a></p></li>
+<li><p>Sweave limitations</p>
+<ul>
+<li>Focused primarily on Latex, a difficult to learn markup language
+used only by weirdos</li>
+<li>Lacks features like caching, multiple plots per chunk, mixing
+programming languages and many other technical items</li>
+<li>Not frequently updated or actively developed</li>
+</ul></li>
+<li><p>knitr is an alternative package</p></li>
+<li><p>Brings together many features added on to Sweave to address
+limitations</p></li>
+<li><p>knitr uses R as the programming language (although others are
+allowed) and a variety of documentation languages</p>
+<ul>
+<li>Latex, Markdown, HTML</li>
+</ul></li>
+<li><p>knitr was developed by Yihui Xie (while a graduate student in
+statistics at Iowa State)</p></li>
+<li><p>See: <a href="http://yihui.name/knitr/" class="uri">http://yihui.name/knitr/</a></p></li>
+</ul>
+</div>
+<div id="summary" class="section level3">
+<h3>Summary</h3>
+<ul>
+<li>Reproducible research is important as a <em>minimum standard</em>,
+particularly for studies that are difficult to replicate</li>
+<li>Infrastructure is needed for <em>creating</em> and
+<em>distributing</em> reproducible documents, beyond what is currently
+available</li>
+<li>There is a growing number of tools for creating reproducible
+documents</li>
+</ul>
+</div>
+</div>
+<div id="scripting-your-analysis" class="section level2">
+<h2>Scripting your analysis</h2>
+<p>Not much to say here … David makes the analogy (again) with music and
+describes how the score is the document that tells all of the players
+what they have to play and how and when.</p>
+<p>When doing data analysis you should write a script that describes all
+of the steps that were taken to reach the final outcome.</p>
+</div>
+<div id="structure-of-a-data-analysis-part-1" class="section level2">
+<h2>Structure of a data analysis (Part 1)</h2>
+<div id="steps-in-a-data-analysis" class="section level3">
+<h3>Steps in a data analysis</h3>
+<ul>
+<li>define the question</li>
+<li>define the ideal data set</li>
+<li>determine what data you can access</li>
+<li>obtain the data</li>
+<li>clean the data</li>
+<li>exploratory data analysis</li>
+<li>statistical prediction/modeling</li>
+<li>interpret results</li>
+<li>challenge results</li>
+<li>synthesize/write up results</li>
+<li>create reproducible code</li>
+</ul>
+</div>
+<div id="the-key-challenge-in-data-analysis" class="section level3">
+<h3>The key challenge in data analysis</h3>
+<p>This was well summed up by the mathematics educator, Dan Myer, in a
+Ted talk:</p>
+<p><em>Ask yourselves, what problem have you solved, ever, that was
+worth solving, where you knew all of the given information in advance?
+Where you didn’t have a surplus of information and had to filter it out,
+or you had insufficient information and had to go find some?</em></p>
+</div>
+<div id="defining-a-question" class="section level3">
+<h3>Defining a question</h3>
+<p>The more effort you put into defining a reasonable question, the less
+effort you will have to spend filtering stuff.</p>
+<p>An example</p>
+<p><strong><em>Start with a general question</em></strong></p>
+<p>Can I automatically detect emails that are SPAM or are not SPAM?</p>
+<p><strong><em>Make it concrete</em></strong></p>
+<p>Can I use quantitative characteristics of the emails to classify them
+as SPAM/HAM?</p>
+</div>
+<div id="defiine-the-ideal-data-set" class="section level3">
+<h3>Defiine the ideal data set</h3>
+<p>5:24</p>
 </div>
 </div>
 </div>
