@@ -210,16 +210,53 @@ Can I use quantitative characteristics of the emails to classify them as SPAM/HA
 
 ### Defiine the ideal data set
 
-5:24
+The data set may depend on your role
 
+- descriptive - a whole population
+- exploratory - a random sample with many variables measured
+- inferential - the right population, randomly sampled
+- predictive - a training and test data set from the same population
+- causal - data from a randomised study
+- mechanistic - data about all components of the system
 
+### Determine what data you can access
 
+- Sometimes you can find data free on the web
+- other times you may need to buy the data
+- be sure to respcet the terms of use
+- if the data don't exist, you may need to generate them yourself
 
+### Obtain the data
 
+- Try to obtain the raw data
+- Be sure to reference the source
+- Polite emails go a long way
+- If you load the data from an internet source, record the url and time accessed
 
+### Clean the data
 
+- Raw data often needs to be processed
+- If it is pre-processed, make sure you understand how
+- Understand the source of the data (census, sample, convenience sample, etc.)
+- May need reformatting, subsampling - record these steps
+- **Determine if the data are good enough** - if not, quit or change data
 
+### Our cleaned data set
 
+We are going to try to answer the question posed above: 
+
+*Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?*
+
+We have decided to use the data set contained in the kernlab package
+
+http://search.r-project.org/library/kernlab/html/spam.html
+
+```{r}
+# If it isn't installed, install the kernlab package with install.packages()
+library(kernlab)
+data(spam)
+str(spam[, 1:5])
+```
 
 
 
