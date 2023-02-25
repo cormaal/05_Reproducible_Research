@@ -43,7 +43,7 @@ The ultimate standard for strengthening scientific evidence is replication of fi
 
 Replication is particularly important in studies that can impact broad policy or regulatory decisions
 
-### What's Wrong with Replication?
+### What's Wrong with replication?
 
 Some studies cannot be replicated
 
@@ -65,7 +65,7 @@ How can we bridge the gap between replication and doing nothing? Reproducibility
 
 - For every field 'X' there is a field 'Computational X'
 
-### Example - Reproducible Air Pollution and Health Research
+### Example - reproducible air pollution and health research
 
 - Estimating small (but important) health effects in the presence of much stronger signals
 - Results inform substantial policy decisions, affect many stakeholders
@@ -165,14 +165,14 @@ In the discovery/test validation stage of omics-based tests:
 - There is a growing number of tools for creating reproducible documents
 
 
-## Scripting your analysis
+## Scripting Your Analysis
 
 Not much to say here ... David makes the analogy (again) with music and describes how the score is the document that tells all of the players what they have to play and how and when.
 
 When doing data analysis you should write a script that describes all of the steps that were taken to reach the final outcome.
 
 
-## Structure of a data analysis (Part 1)
+## Structure of a Data Analysis (Part 1)
 
 ### Steps in a data analysis
 
@@ -258,12 +258,263 @@ data(spam)
 str(spam[, 1:5])
 ```
 
+## Structure of Data Analysis (Part 2)
+
+### Subsampling our data set
+
+We need to generate a test and training set (prediction). The idea is that we are going to use a part of the data set to build our model, and then we are going to use another part of the data set which is independent of the first part actually to determine how good our model is at making predictions.
+
+```{r}
+library(kernlab)
+data(spam)
+
+# Perform the subsampling
+set.seed(3435)
+trainIndicator = rbinom(4601, size = 1, prob = 0.5)
+table(trainIndicator)
+```
+```{r}
+trainSpam = spam[trainIndicator == 1, ]
+testSpam = spam[trainIndicator == 0, ]
+```
+
+### Exploratory data analysis
+
+- Look at summaries of the data
+- Check for missing data
+- Create exploratory plots
+- Perform exploratory analyses (e.g. clustering)
+
+```{r}
+names(trainSpam)
+```
+
+```{r}
+head(trainSpam)
+```
+
+```{r}
+table(trainSpam$type)
+```
+
+```{r}
+plot(trainSpam$capitalAve ~trainSpam$type)
+```
+
+```{r}
+plot(log10(trainSpam$capitalAve + 1) ~ trainSpam$type) # add 1 because there are many zeroes in the data
+```
+
+### Relationships between predictors
+
+```{r}
+plot(log10(trainSpam[, 1:4] +1))
+```
+
+### Clustering
+
+```{r}
+hCluster = hclust(dist(t(trainSpam[, 1:57])))
+plot(hCluster)
+```
+
+### New clustering
+
+```{r}
+hClusterUpdated = hclust(dist(t(log10(trainSpam[, 1:55] + 1))))
+plot(hClusterUpdated)
+```
+
+### Statistical prediction / modeling
+
+- Should be informed by the results of exploratory analysis
+- Exact methods depend on the question of interest
+- Transformations/processing should be accounted for when necessary
+- Measures of uncertainty should be reported
+
+```{r}
+trainSpam$numType = as.numeric(trainSpam$type) - 1
+costFunction = function(x, y) sum(x != (y > 0.5))
+cvError = rep(NA, 55)
+library(boot)
+for (i in 1:55) {
+  lmFormula = reformulate(names(trainSpam)[i], response = "numType")
+  glmFit = glm(lmFormula, family = "binomial", data = trainSpam)
+  cvError[i] = cv.glm(trainSpam, glmFit, costFunction, 2)$delta[2]
+}
+
+## Which predictor has minimum cross-validated error?
+names(trainSpam)[which.min(cvError)]
+```
+
+### Get a measure of uncertainty
+
+```{r}
+## Use the best model from the group
+predictionModel = glm(numType ~ charDollar, family = "binomial", data = trainSpam)
+
+## Get predictions on the test set
+predictionTest = predict(predictionModel, testSpam)
+predictedSpam = rep("nonspam", dim(testSpam)[1])
+
+## Classify as 'spam' for those with prob > 0.5
+predictedSpam[predictionModel$fitted > 0.5] = "spam"
+```
+```{r}
+## Classification table
+table(predictedSpam, testSpam$type)
+```
+```{r}
+## Error rate
+(61 +458)/(1346 + 458 + 61 + 449)
+```
+
+### Interpret results
+
+- Use appropriate language
+    - describes
+    - correlates with / associated with
+    - leads to / causes
+    - predicts
+- Give an explanation
+- Interpret coefficients
+- Interpret measures of uncertainty
+
+### Our example
+
+- The fraction of characters that are dollar signs can be used to predict if an email is Spam
+- Anything with more than 6.6% dollar signs is classified as Spam
+- More dollar signs always means more Spam under our prediction
+- Our test set error rate was 22.4%
+
+### Challenge results
+
+- Challenge all steps
+    - question
+    - data source
+    - processing
+    - analysis
+    - conclusions
+- Challenge measures of uncertainty
+- Challenge choices of terms to include in models
+- Think of potential alternative analyses
+
+### Synthesise / write up results
+
+- Lead with the question
+- Summarise the analyses into the story
+- Don't include every analysis, include it
+    - if it is needed
+    - if it is needed to address a challenge
+- Order analyses according to the story, rather than chronologically
+- Include 'pretty' figures that contribute to the story
+
+### In our example
+
+- Lead with the question
+    - Can I use quantitative characteristics of the emails to classify them as SPAM/HAM?
+- Describe the approach
+    - Collected data from UCI -> created training / test sets
+    - Explored relationships
+    - Chose logistic model on training set by cross validation
+    - Applied to test, 78% test set accuracy
+- Interpret results
+    - Number of dollar signs seems reasonable, e.g. "Make money with Viagra $ $ $ $!"
+- Challenge results
+    - 78% isn't that great
+    - I could use more variables
+    - Why logistic regression?
+
+### Create reproducible code
+
+Use R Markdown and knitr to document your code as you go along
 
 
+## Organising Your Analysis
+
+### Data analysis files
+
+- Data
+    - raw data
+    - processed data
+- Figures
+    - exploratory figures
+    - final figures
+- R code
+    - raw / unused scripts
+    - final scripts
+    - R Markdown files
+- Text
+    - README files
+    - text of analysis / report
+
+### Raw data
+
+- Should be stored in your analysis folder
+- If accessed from the web, include url, description and date accessed in README
+
+### Processed data
+
+- Processed data should be named so it is easy to see which script generated the data
+- The processing script - processed data mapping should occur in the README
+- Processed data should be tidy
+
+### Exploratory figures
+
+- Figures made during the course of your analysis, not necessarily part of your final report
+- The do not need to be "pretty"
+
+### Final figures
+
+- Usually a small subset of the original figures
+- Axes / colours set to make the figure clear
+- Possible multiple panels
+
+### Raw scripts
+
+- May be less commented (but comments help you!)
+- May be multiple versions
+- May include analyses that are later discarded
+
+### Final scripts
+
+- Clearly commented
+    - Small comments liberally - what, when, why, how
+    - Bigger commented blocks for whole sections
+- Include processing details
+- Only analyses that appear in the final write-up
+
+### R Markdown files
+
+- R Markdown files can be used to generate reproducible reports
+- Text and R code are integrated
+- Very easy to create in RStudio
+
+### README files
+
+- Not necessary if you use R Markdown
+- Should contain step-by-step instructions for analysis
+- Here is an example: https://github.com/jtleek/swfdr/blob/master/README.md
+
+### Text of the document
+
+- It should include a title, introduction (motivation), methods (statistics you used), results (including measures of uncertainty), and conclusions (including potential problems)
+- It should tell a story
+- *It should not include every analysis you performed*
+- References should be included for statistical methods
+
+### Further resources
+
+Reproducible research and biostatistics
+
+https://academic.oup.com/biostatistics/article/10/3/405/293660
 
 
+Managing statistical analysis project guidelines and best practices
+
+https://www.r-statistics.com/2010/09/managing-a-statistical-analysis-project-guidelines-and-best-practices/
 
 
+Project template - a pre-organised set of files for data analysis
 
-
-
+http://projecttemplate.net/
