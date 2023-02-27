@@ -1,0 +1,28 @@
+---
+title: "M5_W2_Reproducible_Research_Markdown_and_knitr"
+author: "Alexander Cormack"
+date: "2023-02-27"
+output: html_document
+---
+
+# Markdown and knitr
+
+## Coding Standards for R
+
+1. Always use text files / text editor
+2. Indent your code
+    - indenting improves readability
+    - suggested: indents of 4 spaces at a minimum; 8 spaces ideal
+3. Limit the width of your code (80 columns?)
+    - fixing line length prevents lots of nesting and very long functions
+4. Limit the length of individual functions
+    - limit it to one basic activity, i.e. only read data or process data, or fit a model or print some output
+    - helps with debugging
+
+
+
+
+
+
+
+
