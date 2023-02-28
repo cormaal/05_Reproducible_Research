@@ -19,10 +19,38 @@ output: html_document
     - limit it to one basic activity, i.e. only read data or process data, or fit a model or print some output
     - helps with debugging
 
+## Introduction to Markdown
 
+### What is markdown?
 
+*Markdown is a text-to-HTML conversion tool for web writers. Markdown allows you to write using an easy-to-read, easy-to-write plain text format, then convert it to structurally valid XHTML (or HTML).*
 
+John Gruber, creator of markdown
 
+### Markdown syntax
 
+- Italics: wrap text in single asterisks or underscores
+- Bold: wrap text in double asterisks or underscores
+- Italics and bold: wrap text in triple asterisks or asterisks and underscores
+- Strikethrough: wrap text in double tildes
+- Headings: use hashtags to create 1st, 2nd ... 6th level headings
+- Bulleted lists: use a dash (or any other character consistently across the list) and a space at the beginning of the line
+- Numbered lists: use a number, a full stop and a space
+- Indents: at least one leading space at the beginning of a line - introduces a blank line above and an indent by the number of spaces
+- Links: enclose the link text in square brackets followed by the link address in round brackets
+- Advanced linking: enclose the link text in square brackets immediately followed by a number in square brackets. Later on in the document list all the links with the number in square brackets followed by a colon followed by the link address followed by the link text in quotation marks
+- Newlines: requires a double space at the end of a line
+- See the Github cheatsheet the following formatting tips:
+    - images
+    - code and syntax highlighting
+    - footnotes
+    - tables
+    - blockquotes
+    - inline HTML
+    - horizontal rule
 
+[The Official Markdown Documentation][1]  
+[Github's Markdown Cheatsheet][2]
 
+[1]: https://www.markdownguide.org "The Official Markdown Documentation"
+[2]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Github's Markdown Cheatsheet"
