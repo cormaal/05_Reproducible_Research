@@ -2,7 +2,9 @@
 title: "M5_W2_Reproducible_Research_Markdown_and_knitr"
 author: "Alexander Cormack"
 date: "2023-02-27"
-output: html_document
+output:
+  html_document: default
+  word_document: default
 ---
 
 # Markdown and knitr
@@ -40,7 +42,7 @@ John Gruber, creator of markdown
 - Links: enclose the link text in square brackets followed by the link address in round brackets
 - Advanced linking: enclose the link text in square brackets immediately followed by a number in square brackets. Later on in the document list all the links with the number in square brackets followed by a colon followed by the link address followed by the link text in quotation marks
 - Newlines: requires a double space at the end of a line
-- See the Github cheatsheet the following formatting tips:
+- See the Github cheatsheet for the following formatting tips:
     - images
     - code and syntax highlighting
     - footnotes
@@ -54,3 +56,46 @@ John Gruber, creator of markdown
 
 [1]: https://www.markdownguide.org "The Official Markdown Documentation"
 [2]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Github's Markdown Cheatsheet"
+
+## R Markdown
+
+### What is markdown?
+
+- Created by [John Gruber](https://daringfireball.net) and Aaron Schwartz
+- A simplified version of "markup" languages
+- Allows one to focus on writing as opposed to formatting
+- Simple/minimal intuitive formatting elements
+- Easily converted to valid HTML (and other formats) using existing tools
+- Complete information is available at http://daringfireball.net/projects/markdown/
+- Some background information at http://daringfireball.net/2004/03/dive_into_markdown
+
+### What is R markdown?
+
+- R markdown is the integration of R code with markdown
+- Allows one to create documents containing "live" R code
+- R code is evaluated as part of the processing of the markdown
+- Results from R code are inserted into markdown document
+- A core tool in **literate statistical programming**
+
+- R markdown can be converted to standard markdown using the knitr package in R
+- Markdown can be converted to HTML using the markdown package in R
+- Any basic text editor can be used to create a markdown document; no special editing tools needed
+- The R markdown --> markdown --> HTML work flow can be easily managed using RStudio (but not required)
+
+## knitr (Part 1)
+
+### Problems, problems
+
+- Authors must undertake considerable effort to put data/results on the web
+- Readers must download data/results individually and piece together which data go with which code sections, etc.
+- Authors/readers must manually interact with websites
+- There is no single document to integrate data analysis with textual representations; i.e. data, code, and text are not linked
+
+
+
+
+
+
+
+
+
