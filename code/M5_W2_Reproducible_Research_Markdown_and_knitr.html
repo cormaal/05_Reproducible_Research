@@ -481,6 +481,263 @@ which data go with which code sections, etc.</li>
 representations; i.e. data, code, and text are not linked</li>
 </ul>
 </div>
+<div id="literate-statistical-programming" class="section level3">
+<h3>Literate statistical programming</h3>
+<ul>
+<li><p>Original idea comes from Don Knuth</p></li>
+<li><p>An article is a stream of <strong>text</strong> and
+<strong>code</strong></p></li>
+<li><p>Analysis code is divided into text and code “chunks”</p></li>
+<li><p>Presentation code formats results (tables, figures,
+etc.)</p></li>
+<li><p>Article text explains what is going on</p></li>
+<li><p>Literate programs are <strong>weaved</strong> to produce
+human-readable documents and <strong>tangled</strong> to produce
+machine-readable documents</p></li>
+<li><p>literate programming is a general concept. We need</p>
+<ul>
+<li>a documentation language</li>
+<li>a programming language</li>
+</ul></li>
+<li><p>The original <strong>Sweave</strong> system developed by
+Friedrich Leisch used LaTeX and R</p></li>
+<li><p><strong>knitr</strong> supports a variety of documentation
+languages</p></li>
+</ul>
+</div>
+<div id="how-do-i-make-my-work-reproducible" class="section level3">
+<h3>How do I make my work reproducible?</h3>
+<ul>
+<li>Decide to do it (ideally from the start)</li>
+<li>Keep track of things, perhaps with a version control system to track
+snapshots/changes</li>
+<li>Use software whose operation can be coded</li>
+<li>Don’t save output</li>
+<li>Save data in non-proprietary formats</li>
+</ul>
+</div>
+<div id="literate-programming-pros" class="section level3">
+<h3>Literate programming: pros</h3>
+<ul>
+<li>Text and code all in one place, logical order</li>
+<li>Data, results automatically updated to reflect external changes</li>
+<li>Code is live–automatic “regression test” when building a
+document</li>
+</ul>
+</div>
+<div id="litereate-programming-cons" class="section level3">
+<h3>Litereate programming: cons</h3>
+<ul>
+<li>Text and code all in one place: can make documents difficult to
+read, especially if there is a lot of code</li>
+<li>Can be substantially slow down processing of documents (although
+there are tools to help)</li>
+</ul>
+</div>
+</div>
+<div id="knitr-part-2" class="section level2">
+<h2>knitr (Part 2)</h2>
+<div id="what-is-knitr" class="section level3">
+<h3>What is knitr?</h3>
+<ul>
+<li>An R package written by Yihui Xie (while he was a grad student at
+Iowa State)
+<ul>
+<li>available on CRAN</li>
+</ul></li>
+<li>Supports R markdown, LaTeX and HTML as documentation languages</li>
+<li>Can export to PDF, HTML</li>
+<li>Built right into RStudio for your convenience</li>
+</ul>
+</div>
+<div id="requirements" class="section level3">
+<h3>Requirements</h3>
+<ul>
+<li>A recent version of R</li>
+<li>A text editor (the one that comes with RStudio is OK)</li>
+<li>Some support packages also available on CRAN</li>
+<li>Some knowledge of markdown, LaTeX or HTML</li>
+<li>We will use markdown here</li>
+</ul>
+</div>
+<div id="what-is-markdown-2" class="section level3">
+<h3>What is markdown?</h3>
+<ul>
+<li>A simplified version of “markup” languages</li>
+<li>No special editor required</li>
+<li>Simple, intuitive formatting elements</li>
+<li>Complete information available at <a href="http://goo.gl/MUt9i5" class="uri">http://goo.gl/MUt9i5</a></li>
+</ul>
+</div>
+<div id="what-is-knitr-good-for" class="section level3">
+<h3>What is knitr good for?</h3>
+<ul>
+<li>Manuals</li>
+<li>Short/medium-length technical documents</li>
+<li>Tutorials</li>
+<li>Reports (esp. if generated periodically)</li>
+<li>Data pre-processing documents/summaries</li>
+</ul>
+</div>
+<div id="what-is-knitr-not-good-for" class="section level3">
+<h3>What is knitr NOT good for?</h3>
+<ul>
+<li>Very long research articles</li>
+<li>Complex time-consuming computations</li>
+<li>Documents that require precise formatting</li>
+</ul>
+</div>
+</div>
+<div id="knitr-part-3" class="section level2">
+<h2>knitr (Part 3)</h2>
+<p>This is a demonstration on how to create a knitr document.</p>
+<div id="a-few-notes" class="section level3">
+<h3>A few notes</h3>
+<ul>
+<li>knitr will fill a new document with filler text; delete it</li>
+<li>Code chunks begin with <code>{r} and end with</code></li>
+<li>All R code goes in between these markers</li>
+<li>Code chunks have <strong>names</strong>, which is useful when we
+start making graphics</li>
+</ul>
+<pre class="r"><code>## R code goes here</code></pre>
+<ul>
+<li>By default code in a code chunk is echoed, as will the results of
+the computation (if there are results to print)</li>
+</ul>
+</div>
+</div>
+<div id="knitr-part-4" class="section level2">
+<h2>knitr (Part 4)</h2>
+<div id="processing-of-knitr-documents---what-happens-under-the-hood" class="section level3">
+<h3>Processing of knitr documents - what happens under the hood</h3>
+<ul>
+<li>You write the R markdown document(.Rmd)</li>
+<li>knitr produces a markdown document (.md)</li>
+<li>knitr converts the markdown document into HTML (by default)</li>
+<li>.Rmd -&gt; .md -&gt; .html</li>
+<li>You should NOT edit (or save) the .md or .html documents until you
+are finished</li>
+</ul>
+<p>If you don’t want the code to be seen in the output file, use
+echo=FALSE in the codechunk name</p>
+<pre><code>## [1] 0.1088874</code></pre>
+<p>If you don’t want to see the results you can use results=“hide” in
+the codechunk name</p>
+<pre class="r"><code>set.seed(1)
+x &lt;- rnorm(100)
+mean(x)</code></pre>
+</div>
+<div id="inline-text-computations" class="section level3">
+<h3>Inline text computations</h3>
+<p>We can write some code, use echo=FALSE to hide the code in the output
+document, and then perform inline computations from the code by placing
+the results of the computations between backticks … as shown in the next
+sentence:</p>
+<p>The current time is Fri Mar 03 19:03:55 2023. My favourite random
+number is -0.6203667.</p>
+</div>
+<div id="making-tables-with-xtable" class="section level3">
+<h3>Making tables with xtable</h3>
+<p>Some introductory code</p>
+<pre class="r"><code>library(datasets)
+data(airquality)
+fit &lt;- lm(Ozone ~ Wind + Temp + Solar.R, data = airquality)</code></pre>
+<p>Here is a talbe of regression coefficients:</p>
+<pre class="r"><code>library(xtable)</code></pre>
+<pre><code>## Warning: package &#39;xtable&#39; was built under R version 4.2.2</code></pre>
+<pre class="r"><code>xt &lt;- xtable(summary(fit))
+print(xt, type = &quot;html&quot;)</code></pre>
+<!-- html table generated in R 4.2.1 by xtable 1.8-4 package -->
+<!-- Fri Mar  3 19:03:55 2023 -->
+<table border="1">
+<tr>
+<th>
+</th>
+<th>
+Estimate
+</th>
+<th>
+Std. Error
+</th>
+<th>
+t value
+</th>
+<th>
+Pr(&gt;|t|)
+</th>
+</tr>
+<tr>
+<td align="right">
+(Intercept)
+</td>
+<td align="right">
+-64.3421
+</td>
+<td align="right">
+23.0547
+</td>
+<td align="right">
+-2.79
+</td>
+<td align="right">
+0.0062
+</td>
+</tr>
+<tr>
+<td align="right">
+Wind
+</td>
+<td align="right">
+-3.3336
+</td>
+<td align="right">
+0.6544
+</td>
+<td align="right">
+-5.09
+</td>
+<td align="right">
+0.0000
+</td>
+</tr>
+<tr>
+<td align="right">
+Temp
+</td>
+<td align="right">
+1.6521
+</td>
+<td align="right">
+0.2535
+</td>
+<td align="right">
+6.52
+</td>
+<td align="right">
+0.0000
+</td>
+</tr>
+<tr>
+<td align="right">
+Solar.R
+</td>
+<td align="right">
+0.0598
+</td>
+<td align="right">
+0.0232
+</td>
+<td align="right">
+2.58
+</td>
+<td align="right">
+0.0112
+</td>
+</tr>
+</table>
+<p>5:02</p>
+</div>
 </div>
 </div>
 
