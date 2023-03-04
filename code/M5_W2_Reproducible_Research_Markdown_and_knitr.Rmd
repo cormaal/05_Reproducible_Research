@@ -231,9 +231,53 @@ print(xt, type = "html")
 ```
 
 
-5:02
+### Setting global options
 
+- Sometimes we want to set options for **every** code chunk that are different from the defaults
+- For example, we may want to suppress all code echoing and results output
+- We have to write some code to set these global options
+- You need to write some code at the beginning of the markdown document
 
+In the example below, see how the code to create the data is printed by setting echo equal to true, but by default the code for making the plot is hidden.
 
+```{r setoptions, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "hide")
+```
 
+First simulate data
+```{r simulatedata, echo=TRUE}
+x <- rnorm(100); y <- x + rnorm(100, sd = 0.5)
+```
 
+Here is a scatterplot of the data.
+```{r scatterplot, fig.height=4}
+par(mar = c(5, 4, 1, 1), las = 1)
+plot(x, y, main = "My simulated data")
+```
+
+### Sommon common options
+
+- Output
+    - results: "asis", "hide"
+    - echo: TRUE, FALSE
+- Figures
+    - fig.height: numeric
+    - fig.width: numeric
+
+### Caching complications
+
+- What if one chunk takes a long time to run?
+- All chunks have to be re-computed every time you re-knit the file
+- The cache=TRUE option can be set on a chunk-by-chunk basis to store results of computation
+- After the first run, results are loaded from cache
+
+### Caching caveats
+
+- If the data or code (or anything external) changes, you need to re-run the cached code
+- Dependencies are not checked explicitly
+- Chunks with significant *side effects* may not be cacheable
+
+### Summary
+
+- Literate statistical programming can be a useful way to put text, code, data, output all in one document
+- knitr is a powerful tool for integratinig code and text in a simple document format
