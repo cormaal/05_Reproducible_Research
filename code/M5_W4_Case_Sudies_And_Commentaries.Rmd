@@ -111,6 +111,62 @@ created cache directory '.cache'
 * Cacher is mindful of readers' resources and efficiently loads only those data objects that are needed
 
 
+# Case Study: Air Pollution
+
+## What causes particulate matter (PM) to be toxic?
+
+* PM is composed of many different chemical elements
+* Some components of PM may be more harmful than others
+* Some sources of PM may be more dangerous than others
+* Identifying harmful chemical constituents may lead us to strategies for controlling sources of PM
+
+
+## NMMAPS
+
+* The National Morbidity, Mortality and Air Pollution Study (NMMAPS) was a national study of the short-term health effects of ambient pollution
+* Focused primarily on particulate matter (PM10) and ozone (O3)
+* Health outcomes included mortality from all causes and hospitalizations for cardiovascular and respiratory disease
+* Key publications
+    * http://www.ncbi.nlm.nih.gov/pubmed/11098531
+    * http://www.ncbi.nlm.nih.gov/pubmed/11354823
+
+## NMMAPS and reproducibility
+
+* Data made available at the Internet-based Health and Air Pollution Surveillance System (http://www.ihapss.jhsph.edu)#
+* Research results and software also available at iHAPSS
+* Many studies (over 67 published) have been conducted based on the public data http://www.ncbi.nlm.nih.gov/pubmed/22475833
+* Has served as an important test bed for methodological development
+
+Paused at 4:44
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
